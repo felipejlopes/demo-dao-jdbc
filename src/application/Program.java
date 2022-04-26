@@ -1,5 +1,7 @@
 package application;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +12,8 @@ import model.entities.Seller;
 
 public class Program {
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		System.out.println("=== TEST 1: seller findById ===");
 		Seller seller = sellerDao.findById(3);
@@ -27,6 +29,9 @@ public class Program {
 		for (Seller seller2 : list) {
 			System.out.println(seller2);
 		}
+		
+		System.out.println("=== TEST 4: seller insert ===");
+		sellerDao.insert(new Seller(null, "Felipe", "felipe@gmail.com", sdf.parse("13/06/2000"), 3000.0, new Department(2, "Electronics")));
 	}
 
 }
