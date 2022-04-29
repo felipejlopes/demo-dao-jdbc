@@ -32,6 +32,13 @@ public class Program {
 		
 		System.out.println("=== TEST 4: seller insert ===");
 		sellerDao.insert(new Seller(null, "Felipe", "felipe@gmail.com", sdf.parse("13/06/2000"), 3000.0, new Department(2, "Electronics")));
+		
+		System.out.println("=== TEST 5: seller update ===");
+		seller = sellerDao.findById(1);
+		seller.setName("Martha Waine");
+		sellerDao.update(seller);
+		System.out.println("Update completed");
+		
 	}
 
 }
